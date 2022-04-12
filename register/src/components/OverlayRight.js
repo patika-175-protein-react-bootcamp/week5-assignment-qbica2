@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import style from "../styles/overlayright.module.scss";
 import TitleLine from "../constants/vectors/TitleLine";
 import Moon from "../constants/icons/Moon";
+import Sun from "../constants/icons/Sun";
+import ThemeContext from "../contexts/ThemeContext";
 
 function OverlayRight() {
+  const { theme,vectorColor,handleSetTheme } = useContext(ThemeContext);
+
   return (
-    <div className={`${style.overlayRight} ${style.dark}`}>
+    <div className={`${style.overlayRight} ${theme === "light" && style.light} ${theme === "dark" && style.dark}`}>
       <div className={style.left}>
         <div className={style.main}>
           <div className={style.titleGroup}>
             <div className={style.title}>Kayıt </div>
-            <TitleLine color="blue"/>
+            <TitleLine color={vectorColor}/>
           </div>
           <form>
             <div className={style.nameSurname}>
@@ -46,14 +50,21 @@ function OverlayRight() {
             </div>
             <div className={style.checkGroup}>
               <input type="checkbox" />
-              <span>Sözleşmeyi okudum ve kabul ediyorum.</span>
+              <span>Sözleşmeyi kabul ediyorum.</span>
             </div>
             <button>KAYIT OL</button>
           </form>
         </div>
       </div>
       <div className={style.right}>
-        <Moon width={42.9} height={48} color="#3C3C3C"/>
+        <button onClick={handleSetTheme}>
+          {
+            theme === "light" ? 
+              <Moon width={42.9} height={48} color="#3C3C3C"/> 
+              : 
+              <Sun width={24} height={24} color="#FEFEFE"/>
+          }
+        </button>
       </div>
     </div>
   );

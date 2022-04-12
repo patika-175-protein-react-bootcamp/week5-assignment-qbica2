@@ -1,13 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Logo from "../constants/logos/PatikaDev";
 import style from "../styles/overlayleft.module.scss";
 import TopVector from "../constants/vectors/TopVector";
 import BottomVector from "../constants/vectors/BottomVector";
 import useWindowSize from "../hooks/useWindowSize";
+import ThemeContext from "../contexts/ThemeContext";
+
 
 function OverlayLeft() {
+  const { theme,vectorColor } = useContext(ThemeContext);
   const [,height ] = useWindowSize();
+
   const [logoSize,setLogoSize] = useState({
     width: 341,
     height: 144
@@ -52,7 +56,7 @@ function OverlayLeft() {
   }, [height]);
 
   return (
-    <div className={`${style.overlayLeft} ${style.dark}`}>
+    <div className={`${style.overlayLeft} ${theme === "light" && style.light} ${theme === "dark" && style.dark}`}>
       <div className={style.logo}>
         <Logo width={logoSize.width} height={logoSize.height} textColor= "#444AFF" iconColor="#FFBF5E"/>
       </div>
@@ -62,10 +66,10 @@ function OverlayLeft() {
       </p>
       <div className={style.vectorContainer}>
         <span>
-          <TopVector width={topVectorSize.width} height={topVectorSize.height} color="blue"/>
+          <TopVector width={topVectorSize.width} height={topVectorSize.height} color={vectorColor}/>
         </span>
         <span>
-          <BottomVector width={bottomVectorSize.width} height={bottomVectorSize.height} color="blue"/>
+          <BottomVector width={bottomVectorSize.width} height={bottomVectorSize.height} color={vectorColor}/>
         </span>
       </div>
     </div>
