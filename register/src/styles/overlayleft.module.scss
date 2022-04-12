@@ -48,8 +48,18 @@
     color: #FEFEFE;
 }
 
-// @media screen and (max-width: 1440px) {
-//     .overlayleft{
-      
-//     }
-// }
+@media screen and (max-height: 1079px) {
+    .overlayLeft{
+      .title{
+        font-size: 3.088rem;
+        line-height:4.025rem;
+      }
+      p{
+        font-size:1.35rem;
+        line-height:1.788rem;
+      }
+      .vectorContainer{
+          width: 490px;
+      }
+    }
+}
