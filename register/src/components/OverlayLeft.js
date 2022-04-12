@@ -23,7 +23,6 @@ function OverlayLeft() {
 
   useEffect(() => {
     if (height < 1080) {
-      console.log(height);
       setLogoSize({
         width: 250,
         height: 100
@@ -37,8 +36,6 @@ function OverlayLeft() {
         height: 110
       });
     }else {
-      console.log("height", height);
-
       setLogoSize({
         width: 341,
         height: 144

@@ -125,3 +125,30 @@
         background: #FFBF5E;
     }
 }
+
+@media screen and (max-height: 1079px) {
+    .overlayRight{
+        overflow-y: scroll;
+        .left{
+            .main{
+                .titleGroup{
+                    margin-bottom: 30px;
+                    .title{
+                        font-size: 2.438rem;
+                        line-height:3.188rem;
+                    }
+                }
+                form{
+                    label{
+                        font-size: 1.025rem;
+                        line-height:1.363rem;
+                    }
+                    .formGroup{
+                        margin: 20px 0;
+                        height: 99px;
+                    }
+                }
+            }
+        }
+    }
+}
