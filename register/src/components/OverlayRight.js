@@ -1,14 +1,33 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
+import { useFormik } from "formik";
 
 import style from "../styles/overlayright.module.scss";
 import TitleLine from "../constants/vectors/TitleLine";
 import Moon from "../constants/icons/Moon";
 import Sun from "../constants/icons/Sun";
 import ThemeContext from "../contexts/ThemeContext";
+import Validations from "../constants/validations";
 
 function OverlayRight() {
   const { theme,vectorColor,handleSetTheme } = useContext(ThemeContext);
 
+  const {handleSubmit,handleChange,handleBlur,values,errors,touched} = useFormik({
+    initialValues: {
+      name: "",
+      surname: "",
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      checkbox: false,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    validationSchema: Validations,
+  });
+  console.log(errors);
   return (
     <div className={`${style.overlayRight} ${theme === "light" && style.light} ${theme === "dark" && style.dark}`}>
       <div className={style.left}>
@@ -20,39 +39,96 @@ function OverlayRight() {
           <form>
             <div className={style.nameSurname}>
               <div className={style.name}>
-                <label>İSİM</label>
-                <input type="text" placeholder="İsmini gir"/>
+                <label >İSİM</label>
+                <input 
+                  name="name" 
+                  type="text" 
+                  placeholder="İsmini gir" 
+                  onChange={handleChange} 
+                  value={values.name} 
+                  onBlur={handleBlur}
+                />
               </div>
               <div className={style.surname}>
                 <label>SOYİSİM</label>
-                <input type="text" placeholder="Soyismini gir"/>
+                <input 
+                  name="surname" 
+                  type="text" 
+                  placeholder="Soyismini gir"
+                  onChange={handleChange}
+                  value={values.surname}
+                  onBlur={handleBlur}
+                />
               </div>
             </div>
+            {
+              errors.name && !errors.surname && touched.name && (<span>{errors.name}</span>)
+            }
+            {
+              errors.surname && !errors.name && touched.surname && (<span>{errors.surname}</span>)
+            }
+            {
+              (errors.name && errors.surname) && (errors.name || errors.surname) && (<span>{errors.name}</span>)
+            }
             <div className={style.formGroup}>
               <label className={style.required}>E-POSTA</label>
-              <input type="text" placeholder="E-posta adresini gir"/>
-              <span></span>
+              <input 
+                name="email" 
+                type="text" 
+                placeholder="E-posta adresini gir"
+                onChange={handleChange}
+                value={values.email}
+                onBlur={handleBlur}
+              />
+              {errors.email && touched.email && (<span>{errors.email}</span>)}
             </div>
             <div className={style.formGroup}>
               <label className={style.required}>KULLANICI ADI </label>
-              <input type="text" placeholder="Kullanıcı adını gir"/>
-              <span></span>
+              <input 
+                name="username" 
+                type="text" 
+                placeholder="Kullanıcı adını gir"
+                onChange={handleChange}
+                value={values.username}
+                onBlur={handleBlur}
+              />
+              {errors.username && touched.username && (<span>{errors.username}</span>)}
             </div>
             <div className={style.formGroup}>
               <label className={style.required}>ŞİFRE</label>
-              <input type="password" placeholder="Şifreni gir"/>
-              <span></span>
+              <input 
+                name="password" 
+                type="password" 
+                placeholder="Şifreni gir"
+                onChange={handleChange}
+                value={values.password}
+                onBlur={handleBlur}
+              />
+              {errors.password && touched.password && (<span>{errors.password}</span>)}
             </div>
             <div className={style.formGroup}>
               <label className={style.required}>ŞİFRENİ TEKRAR GİR</label>
-              <input type="password" placeholder="Şifreni tekrar gir"/>
-              <span></span>
+              <input 
+                name="passwordConfirm"  
+                type="password" 
+                placeholder="Şifreni tekrar gir"
+                onChange={handleChange}
+                value={values.passwordConfirm}
+                onBlur={handleBlur}
+              />
+              {errors.passwordConfirm && touched.passwordConfirm && (<span>{errors.passwordConfirm}</span>)}
             </div>
             <div className={style.checkGroup}>
-              <input type="checkbox" />
-              <span>Sözleşmeyi kabul ediyorum.</span>
+              <input 
+                name="checkbox" 
+                type="checkbox" 
+                onChange={handleChange}
+                checked={values.checkbox}
+              />
+              <span>Sözleşmeyi kabul ediyorum.{errors.checkbox && <span className={style.error}>{errors.checkbox}</span>}</span>
             </div>
-            <button>KAYIT OL</button>
+            
+            <button type="submit" onClick={handleSubmit}>KAYIT OL</button>
           </form>
         </div>
       </div>

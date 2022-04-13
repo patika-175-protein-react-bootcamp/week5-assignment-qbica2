@@ -49,6 +49,12 @@
                     margin-top: 12px;
                     padding-left:24px;
                 }
+                span{
+                    font-size: 16px;
+                    line-height: 20px;
+                    letter-spacing: 0.15px;
+                    color: #EE6356;
+                }
                 .nameSurname{
                     width: 100%;
                     height: 109px;
@@ -97,6 +103,9 @@
                         color: #8E8E8E;
                         letter-spacing: 0.1px;
                         text-align:left;
+                        .error{
+                            color: #EE6356;
+                        }
                     }
                 }
                 button{
@@ -129,6 +138,9 @@
 .light{
     background: #E5E5E5;
     color: #3C3C3C;
+    input{
+        color: #3C3C3C;
+    }
     button{
         background: #444AFF;
     }
@@ -136,6 +148,9 @@
 .dark{
     background: #2C2C2C;
     color: #FEFEFE;
+    input{
+        color: #FEFEFE;
+    }
     button{
         background: #FFBF5E;
     }
