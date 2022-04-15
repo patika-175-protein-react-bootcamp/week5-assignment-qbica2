@@ -155,6 +155,26 @@
         background: #FFBF5E;
     }
 }
+.error{
+    border: 2px solid #EE6356 !important;
+    animation: shake 300ms;
+    &:focus{
+        border: 2px solid #EE6356 !important;
+    }
+}
+
+@keyframes shake {
+    25% {
+    transform: translateX(10px);
+  }
+    50% {
+    transform: translateX(-10px);
+  }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
 
 @media screen and (max-height: 1079px) {
     .overlayRight{

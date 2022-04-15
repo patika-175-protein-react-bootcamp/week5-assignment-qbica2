@@ -73,6 +73,7 @@ function OverlayRight() {
             <div className={style.formGroup}>
               <label className={style.required}>E-POSTA</label>
               <input 
+                className={errors.email && touched.email && style.error}
                 name="email" 
                 type="text" 
                 placeholder="E-posta adresini gir"
@@ -85,6 +86,7 @@ function OverlayRight() {
             <div className={style.formGroup}>
               <label className={style.required}>KULLANICI ADI </label>
               <input 
+                className={errors.username && touched.username && style.error}
                 name="username" 
                 type="text" 
                 placeholder="Kullanıcı adını gir"
@@ -97,6 +99,7 @@ function OverlayRight() {
             <div className={style.formGroup}>
               <label className={style.required}>ŞİFRE</label>
               <input 
+                className={errors.password && touched.password && style.error}
                 name="password" 
                 type="password" 
                 placeholder="Şifreni gir"
@@ -108,7 +111,8 @@ function OverlayRight() {
             </div>
             <div className={style.formGroup}>
               <label className={style.required}>ŞİFRENİ TEKRAR GİR</label>
-              <input 
+              <input
+                className={errors.passwordConfirm && touched.passwordConfirm && style.error} 
                 name="passwordConfirm"  
                 type="password" 
                 placeholder="Şifreni tekrar gir"
