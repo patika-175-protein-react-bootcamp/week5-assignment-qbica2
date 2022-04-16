@@ -20,7 +20,7 @@ const Validations = yup.object().shape({
     .matches(/^(?=.*[A-Z])/, "Şifre en az bir büyük harf içermelidir")
     .matches(/^(?=.*[0-9])/, "Şifre en az bir rakam içermelidir"),
   passwordConfirm: yup.string().oneOf([yup.ref("password")],"Şifreler aynı olmalıdır").required("Şifre alanı zorunludur"),
-  checkbox: yup.bool().oneOf([true], "Sözleşmeyi kabul etmelisiniz")
+  checkbox: yup.bool().oneOf([true], "Sözleşmeyi kabul etmelisiniz!")
 });
 
 export default Validations ;

@@ -27,7 +27,7 @@ function OverlayRight() {
     },
     validationSchema: Validations,
   });
-  console.log(errors);
+
   return (
     <div className={`${style.overlayRight} ${theme === "light" && style.light} ${theme === "dark" && style.dark}`}>
       <div className={style.left}>
