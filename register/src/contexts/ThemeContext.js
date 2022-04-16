@@ -28,7 +28,6 @@ export const ThemeProvider = ({children}) => {
 
   const values = {
     theme,
-    setTheme,
     vectorColor,
     handleSetTheme
   };

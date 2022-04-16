@@ -129,7 +129,7 @@ function OverlayRight() {
                 onChange={handleChange}
                 checked={values.checkbox}
               />
-              <span>Sözleşmeyi kabul ediyorum.{errors.checkbox && <span className={style.error}>{errors.checkbox}</span>}</span>
+              <span>Sözleşmeyi kabul ediyorum.{errors.checkbox && touched.checkbox && <span className={style.error}>{errors.checkbox}</span>}</span>
             </div>
             
             <button type="submit" onClick={handleSubmit}>KAYIT OL</button>
